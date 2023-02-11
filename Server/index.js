@@ -11,7 +11,7 @@ app.get('/dados', (req, res) => {
 })
 
 app.post('/', (req, res) => {
-  teste = { "Temperatura": req.body.temperatura, "Umidade": req.body.umidade };
+  teste = { "Temperatura": req.body.temperatura, "umidade": req.body.umidade };
   res.status(200).send(req.body);
   console.log("Temperatura:", req.body.temperatura, "umidade:", req.body.umidade);
 })
