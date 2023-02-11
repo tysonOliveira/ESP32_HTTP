@@ -54,23 +54,11 @@ void loop()
   HTTPClient http;
   http.begin(host, port, "/");
  
-  //int httpCode = http.GET();
-
-  //if (httpCode > 0 && httpCode == HTTP_CODE_OK) {
-  //  Serial.println(http.getString());
-  //  Serial.println(httpCode);      
-  //}else{
-  //  Serial.println("HTTP error: " + httpCode);
-  //}
-  
-  //String temperatura = to_string(t);
   http.addHeader("Content-Type", "application/json");
-  
-  String temp = String(t, 2);
 
-  String temperatura = "{\"dados\":\"" + temp + "\"}";
+  String payload = "{\"temperatura\":" + String(t) + ",\"umidade\":" + String(h) + "}";   
   
-  int httpCode = http.POST(temperatura);  
+  int httpCode = http.POST(payload);  
 
   if (httpCode > 0) {
     // Requisição bem-sucedida
